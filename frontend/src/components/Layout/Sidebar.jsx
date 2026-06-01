@@ -2,7 +2,8 @@ import React from 'react';
 import { useAppContext } from '@/context/AppContext';
 import { motion } from 'framer-motion';
 import { 
-  Home, Trophy, MessageSquare, Brain, PlayCircle, User, Zap, Crown 
+  Home, Trophy, MessageSquare, Brain, PlayCircle, User, Zap, Crown,
+  BarChart3, Calendar
 } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -14,9 +15,11 @@ const Sidebar = () => {
   const navItems = [
     { id: 'home', icon: Home, label: 'Home', path: '/', color: '#39FF14' },
     { id: 'banter', icon: MessageSquare, label: 'Banter', path: '/banter', color: '#FF007F', badge: '12K' },
+    { id: 'match', icon: PlayCircle, label: 'Match Hub', path: '/match', color: '#FF007F', live: true },
+    { id: 'stats', icon: BarChart3, label: 'Stats Center', path: '/stats', color: '#FFB800' },
+    { id: 'calendar', icon: Calendar, label: 'Schedule', path: '/calendar', color: '#39FF14' },
     { id: 'fantasy', icon: Trophy, label: 'Fantasy', path: '/fantasy', color: '#FFB800' },
     { id: 'ai', icon: Brain, label: 'AI Tactics', path: '/ai', color: '#00E5FF' },
-    { id: 'match', icon: PlayCircle, label: 'Match Hub', path: '/match', color: '#FF007F', live: true },
     { id: 'profile', icon: User, label: 'Profile', path: '/profile', color: '#FFFFFF' }
   ];
 

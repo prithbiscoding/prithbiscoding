@@ -352,7 +352,7 @@ const BanterFeed = () => {
               animate={{ y: 0 }}
               exit={{ y: 100 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-lg bg-[#111115] border-t md:border border-white/10 md:rounded-2xl p-5"
+              className="w-full max-w-lg bg-[#111115] border-t md:border border-white/10 md:rounded-2xl p-5 pb-20 md:pb-5"
             >
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-black text-lg flex items-center gap-2">
@@ -362,7 +362,7 @@ const BanterFeed = () => {
                 <button
                   data-testid="close-composer"
                   onClick={() => setShowComposer(false)}
-                  className="text-zinc-500 hover:text-white"
+                  className="text-zinc-500 hover:text-white px-3 py-1"
                 >
                   ✕
                 </button>

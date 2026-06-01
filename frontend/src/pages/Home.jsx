@@ -4,9 +4,10 @@ import { useAppContext } from '@/context/AppContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Trophy, MessageSquare, Brain, PlayCircle, Zap, TrendingUp, 
-  Flame, Users, Bell, Search, Sparkles, Star, Crown 
+  Flame, Users, Bell, Search, Sparkles, Star, Crown, Calendar,
+  BarChart3, Newspaper, ChevronRight
 } from 'lucide-react';
-import { MATCH_DATA, TRENDING_HASHTAGS, MATCH_STORIES, BANTER_POSTS, HERO_IMAGES } from '@/data/mockData';
+import { MATCH_DATA, TRENDING_HASHTAGS, MATCH_STORIES, BANTER_POSTS, HERO_IMAGES, WC_MATCHES, WORLD_CUP_TEAMS, NEWS_ITEMS, GOLDEN_BOOT } from '@/data/mockData';
 import Stories from '@/components/Banter/Stories';
 
 const Home = () => {
@@ -247,6 +248,120 @@ const Home = () => {
               <p className="font-black text-sm" style={{ color: tag.color }}>{tag.tag}</p>
               <p className="text-xs text-zinc-500 font-mono">{tag.posts} posts</p>
             </motion.button>
+          ))}
+        </div>
+      </div>
+
+      {/* Upcoming Matches */}
+      <div className="px-4 mt-6">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-lg font-black flex items-center gap-2">
+            <Calendar className="w-5 h-5 text-[#39FF14]" />
+            Upcoming
+          </h2>
+          <button 
+            data-testid="see-all-calendar"
+            onClick={() => navigate('/calendar')}
+            className="text-xs font-bold text-[#39FF14] hover:underline flex items-center gap-1"
+          >
+            All Matches <ChevronRight className="w-3 h-3" />
+          </button>
+        </div>
+        <div className="space-y-2">
+          {WC_MATCHES.filter(m => m.status === 'upcoming').slice(0, 3).map((match) => {
+            const home = WORLD_CUP_TEAMS.find(t => t.id === match.homeTeam);
+            const away = WORLD_CUP_TEAMS.find(t => t.id === match.awayTeam);
+            return (
+              <button
+                key={match.id}
+                data-testid={`upcoming-match-${match.id}`}
+                onClick={() => navigate('/calendar')}
+                className="w-full p-3 bg-[#111115] border border-white/10 rounded-xl flex items-center justify-between hover:border-white/30 transition-all"
+              >
+                <div className="flex items-center gap-3 flex-1 min-w-0">
+                  <div className="flex items-center gap-1">
+                    <span className="text-xl">{home?.flag}</span>
+                    <span className="text-xs text-zinc-500 font-mono">vs</span>
+                    <span className="text-xl">{away?.flag}</span>
+                  </div>
+                  <div className="text-left flex-1 min-w-0">
+                    <p className="text-xs font-bold truncate">{home?.name} vs {away?.name}</p>
+                    <p className="text-[10px] text-zinc-500">{match.stage} · {match.city}</p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <p className="text-xs font-bold text-[#39FF14]">{match.time}</p>
+                  <p className="text-[10px] text-zinc-500 font-mono">{new Date(match.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</p>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Golden Boot Leader Widget */}
+      <div className="px-4 mt-6">
+        <div className="rounded-2xl p-[2px] bg-gradient-to-r from-[#FFB800] via-[#FFD700] to-[#FFB800]">
+          <button
+            data-testid="golden-boot-widget"
+            onClick={() => navigate('/stats')}
+            className="w-full bg-[#111115] rounded-2xl p-4 text-left"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <Trophy className="w-5 h-5 text-[#FFB800]" />
+                <h3 className="font-black text-sm">Golden Boot Race</h3>
+              </div>
+              <ChevronRight className="w-4 h-4 text-zinc-500" />
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#FFB800] bg-zinc-800 flex-shrink-0">
+                <img src={GOLDEN_BOOT[0].image} alt={GOLDEN_BOOT[0].name} className="w-full h-full object-cover" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="font-bold text-sm truncate">{GOLDEN_BOOT[0].name} {GOLDEN_BOOT[0].flag}</p>
+                <p className="text-xs text-zinc-500">{GOLDEN_BOOT[0].matches} matches · {GOLDEN_BOOT[0].avg} avg</p>
+              </div>
+              <div className="text-right">
+                <p className="text-3xl font-black font-mono text-[#FFB800]">{GOLDEN_BOOT[0].goals}</p>
+                <p className="text-[10px] text-zinc-500 uppercase">Goals</p>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      {/* News Feed */}
+      <div className="px-4 mt-6">
+        <h2 className="text-lg font-black mb-3 flex items-center gap-2">
+          <Newspaper className="w-5 h-5 text-[#00E5FF]" />
+          Latest News
+        </h2>
+        <div className="space-y-3">
+          {NEWS_ITEMS.slice(0, 3).map((news, idx) => (
+            <motion.div
+              key={news.id}
+              data-testid={`news-${news.id}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.05 }}
+              className="bg-[#111115] border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all"
+            >
+              <div className="aspect-video overflow-hidden bg-zinc-900 relative">
+                <img src={news.image} alt={news.title} className="w-full h-full object-cover" />
+                <div className="absolute top-2 left-2 px-2 py-1 bg-black/70 backdrop-blur-sm rounded-md">
+                  <span className="text-[10px] font-bold uppercase text-[#39FF14]">{news.category}</span>
+                </div>
+              </div>
+              <div className="p-3">
+                <p className="font-bold text-sm leading-snug mb-1 line-clamp-2">{news.title}</p>
+                <p className="text-xs text-zinc-500 line-clamp-2 mb-2">{news.summary}</p>
+                <div className="flex items-center justify-between text-[10px] text-zinc-500 font-mono">
+                  <span>{news.source} · {news.time}</span>
+                  <span>👀 {news.reads}</span>
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

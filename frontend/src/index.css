@@ -155,6 +155,17 @@ code {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+/* Make emergent badge non-interactive on mobile so it doesn't block bottom nav */
+@media (max-width: 768px) {
+  #emergent-badge {
+    pointer-events: none !important;
+    opacity: 0.4 !important;
+    transform: scale(0.7) !important;
+    bottom: 80px !important;
+    right: 8px !important;
+  }
+}
+
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
