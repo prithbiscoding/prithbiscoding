@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar as CalendarIcon, MapPin, Clock } from 'lucide-react';
 import { WC_MATCHES, WORLD_CUP_TEAMS } from '@/data/mockData';
+import Flag from '@/components/Flag';
 
 const STAGES = ['All', 'Group Stage', 'Round of 32', 'Round of 16', 'Quarter Final', 'Semi Final', '3rd Place', 'FINAL'];
 
@@ -114,7 +115,7 @@ const CalendarPage = () => {
 
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2 flex-1 min-w-0">
-                          <span className="text-2xl">{home?.flag}</span>
+                          <Flag teamId={home?.id} emoji={home?.flag} size="lg" />
                           <span className="font-bold text-sm truncate">{home?.name}</span>
                         </div>
                         <div className="px-4 text-center">
@@ -128,7 +129,7 @@ const CalendarPage = () => {
                         </div>
                         <div className="flex items-center gap-2 flex-1 justify-end min-w-0">
                           <span className="font-bold text-sm truncate">{away?.name}</span>
-                          <span className="text-2xl">{away?.flag}</span>
+                          <Flag teamId={away?.id} emoji={away?.flag} size="lg" />
                         </div>
                       </div>
 

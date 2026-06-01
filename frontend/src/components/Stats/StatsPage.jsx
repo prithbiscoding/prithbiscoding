@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Trophy, Award, Star, Target, Shield } from 'lucide-react';
 import { GOLDEN_BOOT, GOLDEN_GLOVE, GOLDEN_BALL, YOUNG_PLAYERS, GROUP_STANDINGS, WORLD_CUP_TEAMS } from '@/data/mockData';
+import Flag from '@/components/Flag';
 
 const CATEGORIES = [
   { id: 'boot', label: 'Golden Boot', icon: Trophy, color: '#FFB800', emoji: '🥇' },
@@ -96,7 +97,7 @@ const StatsPage = () => {
                       >
                         <div className="col-span-3 flex items-center gap-2">
                           <span className="w-1 h-6 rounded" style={{ backgroundColor: qualifies ? '#39FF14' : 'transparent' }} />
-                          <span className="text-lg">{teamData?.flag}</span>
+                          <Flag teamId={teamData?.id} emoji={teamData?.flag} size="sm" />
                           <span className="font-bold truncate">{teamData?.name}</span>
                         </div>
                         <div className="text-center">{team.P}</div>

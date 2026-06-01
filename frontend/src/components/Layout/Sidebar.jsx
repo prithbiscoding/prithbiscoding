@@ -3,7 +3,7 @@ import { useAppContext } from '@/context/AppContext';
 import { motion } from 'framer-motion';
 import { 
   Home, Trophy, MessageSquare, Brain, PlayCircle, User, Zap, Crown,
-  BarChart3, Calendar
+  BarChart3, Calendar, Users
 } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -19,6 +19,7 @@ const Sidebar = () => {
     { id: 'stats', icon: BarChart3, label: 'Stats Center', path: '/stats', color: '#FFB800' },
     { id: 'calendar', icon: Calendar, label: 'Schedule', path: '/calendar', color: '#39FF14' },
     { id: 'fantasy', icon: Trophy, label: 'Fantasy', path: '/fantasy', color: '#FFB800' },
+    { id: 'friends', icon: Users, label: 'Friends', path: '/friends', color: '#FF007F' },
     { id: 'ai', icon: Brain, label: 'AI Tactics', path: '/ai', color: '#00E5FF' },
     { id: 'profile', icon: User, label: 'Profile', path: '/profile', color: '#FFFFFF' }
   ];

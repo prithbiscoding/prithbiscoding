@@ -4,6 +4,7 @@ import { WORLD_CUP_TEAMS } from '@/data/mockData';
 import { motion } from 'framer-motion';
 import { Upload, Check } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import Flag from '@/components/Flag';
 
 const ProfileSetup = () => {
   const { profile, setProfile } = useAppContext();
@@ -112,7 +113,7 @@ const ProfileSetup = () => {
                   }`}
                 >
                   <div className="flex items-center gap-2">
-                    <span className="text-2xl">{team.flag}</span>
+                    <Flag teamId={team.id} emoji={team.flag} size="md" />
                     <span className="text-sm font-medium truncate">{team.name}</span>
                   </div>
                   {selectedTeam?.id === team.id && (

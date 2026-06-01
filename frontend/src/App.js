@@ -11,6 +11,7 @@ import PersonaGrid from '@/components/AI/PersonaGrid';
 import MatchHub from '@/components/Match/MatchHub';
 import StatsPage from '@/components/Stats/StatsPage';
 import CalendarPage from '@/components/Calendar/CalendarPage';
+import FriendsPage from '@/components/Friends/FriendsPage';
 
 const AppRoutes = () => {
   const { profile } = useAppContext();
@@ -34,6 +35,7 @@ const AppRoutes = () => {
         <Route path="/match" element={<MatchHub />} />
         <Route path="/stats" element={<StatsPage />} />
         <Route path="/calendar" element={<CalendarPage />} />
+        <Route path="/friends" element={<FriendsPage />} />
         <Route path="/profile" element={<ProfileSetup />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

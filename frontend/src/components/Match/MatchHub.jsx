@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useAppContext } from '@/context/AppContext';
-import { MATCH_DATA, SOCIAL_TRENDING, TRIVIA_FACTS } from '@/data/mockData';
+import { MATCH_DATA, SOCIAL_TRENDING, TRIVIA_FACTS, MOTM_CANDIDATES, BROADCASTERS, WATCH_PARTIES } from '@/data/mockData';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Zap, Activity, Users, Flame, Radio } from 'lucide-react';
+import { Zap, Activity, Users, Flame, Radio, Tv, Award, Play } from 'lucide-react';
 import FormationView from './FormationView';
 import LiveStats from './LiveStats';
 import TriviaTicker from './TriviaTicker';
 import { Switch } from '@/components/ui/switch';
 import { toast } from 'sonner';
+import Flag from '@/components/Flag';
 
 const MatchHub = () => {
   const { matchPredictions, setMatchPredictions } = useAppContext();
   const [spicyMode, setSpicyMode] = useState(false);
   const [activeTab, setActiveTab] = useState('stats');
+  const [motmVote, setMotmVote] = useState(null);
 
   const handlePredictionVote = (type, value) => {
     setMatchPredictions({ ...matchPredictions, [type]: value });
@@ -68,7 +70,9 @@ const MatchHub = () => {
 
               <div className="flex items-center justify-between">
                 <div className="text-center flex-1">
-                  <div className="text-5xl mb-2">{MATCH_DATA.homeTeam.flag}</div>
+                  <div className="flex justify-center mb-2">
+                    <Flag teamId="FRA" emoji="🇫🇷" size="2xl" />
+                  </div>
                   <p className="font-black text-white text-sm md:text-base">{MATCH_DATA.homeTeam.name}</p>
                 </div>
                 
@@ -85,7 +89,9 @@ const MatchHub = () => {
                 </div>
 
                 <div className="text-center flex-1">
-                  <div className="text-5xl mb-2">{MATCH_DATA.awayTeam.flag}</div>
+                  <div className="flex justify-center mb-2">
+                    <Flag teamId="ENG" emoji="🏴" size="2xl" />
+                  </div>
                   <p className="font-black text-white text-sm md:text-base">{MATCH_DATA.awayTeam.name}</p>
                 </div>
               </div>
@@ -233,6 +239,132 @@ const MatchHub = () => {
                 </button>
               );
             })}
+          </div>
+        </div>
+
+        {/* MOTM Voting */}
+        <div data-testid="motm-voting" className="mt-4 bg-[#111115] border border-white/10 rounded-2xl p-4">
+          <h3 className="font-black mb-3 flex items-center gap-2">
+            <Award className="w-5 h-5 text-[#FFB800]" />
+            Man of the Match
+          </h3>
+          <p className="text-xs text-zinc-400 mb-3">Vote for the standout player · {MOTM_CANDIDATES.reduce((sum, c) => sum + c.votes, 0).toLocaleString()} votes cast</p>
+          <div className="space-y-2">
+            {MOTM_CANDIDATES.map((player) => {
+              const totalVotes = MOTM_CANDIDATES.reduce((sum, c) => sum + c.votes, 0);
+              const pct = ((player.votes / totalVotes) * 100).toFixed(0);
+              const voted = motmVote === player.id;
+              return (
+                <button
+                  key={player.id}
+                  data-testid={`motm-vote-${player.id}`}
+                  onClick={() => {
+                    setMotmVote(player.id);
+                    toast.success(`Voted for ${player.name}! 🌟`);
+                  }}
+                  className={`w-full p-3 rounded-xl border transition-all relative overflow-hidden ${
+                    voted ? 'border-[#FFB800] bg-[#FFB800]/10' : 'border-white/10 hover:border-white/20'
+                  }`}
+                >
+                  <div 
+                    className="absolute inset-0 opacity-15"
+                    style={{ background: `linear-gradient(90deg, #FFB800 ${pct}%, transparent ${pct}%)` }}
+                  />
+                  <div className="relative flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 bg-zinc-800 flex-shrink-0">
+                      <img src={player.image} alt={player.name} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="flex-1 text-left min-w-0">
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <Flag teamId={player.team} size="sm" />
+                        <p className="font-bold text-sm truncate">{player.name}</p>
+                      </div>
+                      <p className="text-xs text-zinc-500">Rating {player.rating} · {player.goals}G {player.assists}A</p>
+                    </div>
+                    <div className="text-right flex-shrink-0">
+                      <p className="font-mono font-black text-sm text-[#FFB800]">{pct}%</p>
+                      <p className="text-[10px] text-zinc-500">{player.votes.toLocaleString()}</p>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Watch Parties */}
+        <div data-testid="watch-parties" className="mt-4">
+          <div className="flex items-center justify-between mb-3 px-1">
+            <h3 className="font-black flex items-center gap-2">
+              <Play className="w-5 h-5 text-[#FF007F]" />
+              Live Watch Parties
+            </h3>
+            <span className="text-xs text-zinc-500 font-mono">{WATCH_PARTIES.filter(p => p.live).length} active</span>
+          </div>
+          <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+            {WATCH_PARTIES.map((party) => (
+              <button
+                key={party.id}
+                data-testid={`watch-party-${party.id}`}
+                onClick={() => toast.success(`Joining ${party.match} party! 🎉`)}
+                className={`flex-shrink-0 w-64 rounded-2xl p-[2px] bg-gradient-to-br ${party.gradient}`}
+              >
+                <div className="bg-[#111115] rounded-2xl p-4 text-left">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="font-black text-sm">{party.match}</p>
+                    {party.live && (
+                      <div className="flex items-center gap-1 px-2 py-0.5 bg-red-500/20 border border-red-500/40 rounded-md">
+                        <span className="w-1 h-1 bg-red-500 rounded-full animate-pulse" />
+                        <span className="font-bold text-[9px] text-red-400">LIVE</span>
+                      </div>
+                    )}
+                  </div>
+                  <p className="text-xs text-zinc-400 mb-3">{party.theme}</p>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-[10px] text-zinc-500">Hosted by</p>
+                      <p className="text-xs font-bold">{party.host}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-lg font-black text-[#FF007F]">{party.viewers}</p>
+                      <p className="text-[10px] text-zinc-500">viewers</p>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Where to Watch */}
+        <div data-testid="broadcasters" className="mt-4 bg-[#111115] border border-white/10 rounded-2xl p-4">
+          <h3 className="font-black mb-3 flex items-center gap-2">
+            <Tv className="w-5 h-5 text-[#00E5FF]" />
+            Where to Watch
+          </h3>
+          <p className="text-xs text-zinc-400 mb-3">Live telecast info for major countries</p>
+          <div className="grid grid-cols-2 gap-2">
+            {BROADCASTERS.map((b) => (
+              <div
+                key={b.country}
+                data-testid={`broadcaster-${b.country}`}
+                className="p-3 bg-[#1A1A24] border border-white/5 rounded-xl"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <img 
+                    src={`https://flagcdn.com/w40/${b.flag}.png`} 
+                    alt={b.country}
+                    className="w-6 h-4 rounded-sm object-cover"
+                  />
+                  <p className="text-xs font-bold">{b.country}</p>
+                </div>
+                <div className="space-y-1">
+                  {b.channels.slice(0, 3).map((ch) => (
+                    <p key={ch} className="text-[10px] text-zinc-400">📺 {ch}</p>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

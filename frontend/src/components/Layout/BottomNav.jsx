@@ -3,7 +3,7 @@ import { useAppContext } from '@/context/AppContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Home, Trophy, MessageSquare, Brain, PlayCircle, MoreHorizontal, 
-  Calendar, BarChart3, X
+  Calendar, BarChart3, X, Users
 } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -23,6 +23,7 @@ const BottomNav = () => {
     { id: 'fantasy', icon: Trophy, label: 'Fantasy', path: '/fantasy', color: '#FFB800' },
     { id: 'calendar', icon: Calendar, label: 'Schedule', path: '/calendar', color: '#39FF14' },
     { id: 'ai', icon: Brain, label: 'AI Coach', path: '/ai', color: '#00E5FF' },
+    { id: 'friends', icon: Users, label: 'Friends', path: '/friends', color: '#FF007F' },
   ];
 
   const handleMoreClick = (path) => {

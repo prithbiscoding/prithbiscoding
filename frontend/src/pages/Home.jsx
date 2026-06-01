@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { MATCH_DATA, TRENDING_HASHTAGS, MATCH_STORIES, BANTER_POSTS, HERO_IMAGES, WC_MATCHES, WORLD_CUP_TEAMS, NEWS_ITEMS, GOLDEN_BOOT } from '@/data/mockData';
 import Stories from '@/components/Banter/Stories';
+import Flag from '@/components/Flag';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -164,7 +165,9 @@ const Home = () => {
 
             <div className="flex items-center justify-between">
               <div className="text-center flex-1">
-                <div className="text-4xl mb-1">{MATCH_DATA.homeTeam.flag}</div>
+                <div className="flex justify-center mb-1">
+                  <Flag teamId="FRA" emoji="🇫🇷" size="xl" />
+                </div>
                 <p className="font-bold text-white text-sm">{MATCH_DATA.homeTeam.name}</p>
               </div>
               
@@ -176,7 +179,9 @@ const Home = () => {
               </div>
 
               <div className="text-center flex-1">
-                <div className="text-4xl mb-1">{MATCH_DATA.awayTeam.flag}</div>
+                <div className="flex justify-center mb-1">
+                  <Flag teamId="ENG" emoji="🏴" size="xl" />
+                </div>
                 <p className="font-bold text-white text-sm">{MATCH_DATA.awayTeam.name}</p>
               </div>
             </div>
@@ -280,9 +285,9 @@ const Home = () => {
               >
                 <div className="flex items-center gap-3 flex-1 min-w-0">
                   <div className="flex items-center gap-1">
-                    <span className="text-xl">{home?.flag}</span>
+                    <Flag teamId={home?.id} emoji={home?.flag} size="md" />
                     <span className="text-xs text-zinc-500 font-mono">vs</span>
-                    <span className="text-xl">{away?.flag}</span>
+                    <Flag teamId={away?.id} emoji={away?.flag} size="md" />
                   </div>
                   <div className="text-left flex-1 min-w-0">
                     <p className="text-xs font-bold truncate">{home?.name} vs {away?.name}</p>

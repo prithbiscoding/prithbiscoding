@@ -568,3 +568,42 @@ export const HERO_IMAGES = {
   fansCrowd: 'https://images.unsplash.com/photo-1518604666860-9ed391f76460?w=1920&h=1080&fit=crop&q=85',
   goalCelebration: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920&h=1080&fit=crop&q=85'
 };
+
+// Where to Watch - Telecast info for major countries
+export const BROADCASTERS = [
+  { country: 'USA', flag: 'us', channels: ['FOX Sports', 'Telemundo', 'Peacock'], iconColor: '#003478' },
+  { country: 'UK', flag: 'gb', channels: ['BBC Sport', 'ITV', 'BBC iPlayer'], iconColor: '#012169' },
+  { country: 'India', flag: 'in', channels: ['Sports18', 'JioCinema', 'Star Sports'], iconColor: '#FF9933' },
+  { country: 'Brazil', flag: 'br', channels: ['Globo', 'SporTV', 'GE.com'], iconColor: '#009B3A' },
+  { country: 'Argentina', flag: 'ar', channels: ['TyC Sports', 'TV Pública', 'DSports'], iconColor: '#74ACDF' },
+  { country: 'Germany', flag: 'de', channels: ['ARD', 'ZDF', 'MagentaTV'], iconColor: '#000000' },
+  { country: 'France', flag: 'fr', channels: ['TF1', 'beIN Sports', 'M6'], iconColor: '#0055A4' },
+  { country: 'Spain', flag: 'es', channels: ['RTVE', 'Movistar+', 'DAZN'], iconColor: '#AA151B' },
+  { country: 'Mexico', flag: 'mx', channels: ['Televisa', 'TV Azteca', 'ViX'], iconColor: '#006847' },
+  { country: 'Japan', flag: 'jp', channels: ['NHK', 'TV Asahi', 'ABEMA'], iconColor: '#BC002D' },
+  { country: 'Australia', flag: 'au', channels: ['SBS', 'Optus Sport', 'Stan Sport'], iconColor: '#00843D' },
+  { country: 'Saudi Arabia', flag: 'sa', channels: ['SSC', 'Shahid', 'beIN'], iconColor: '#006C35' }
+];
+
+// MOTM (Man of the Match) candidates for current live match
+export const MOTM_CANDIDATES = [
+  { id: 'motm1', playerId: 'p6', name: 'Kylian Mbappé', team: 'FRA', teamFlag: 'fr', position: 'FW', rating: 9.4, goals: 2, assists: 1, votes: 4521, image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Kylian_Mbapp%C3%A9_2018.jpg/200px-Kylian_Mbapp%C3%A9_2018.jpg' },
+  { id: 'motm2', playerId: 'p17', name: 'Harry Kane', team: 'ENG', teamFlag: 'gb-eng', position: 'FW', rating: 8.7, goals: 1, assists: 0, votes: 2134, image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Harry_Kane_2019.jpg/200px-Harry_Kane_2019.jpg' },
+  { id: 'motm3', playerId: 'p18', name: 'Jude Bellingham', team: 'ENG', teamFlag: 'gb-eng', position: 'MF', rating: 9.1, goals: 1, assists: 1, votes: 3789, image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Jude_Bellingham_2023.jpg/200px-Jude_Bellingham_2023.jpg' },
+  { id: 'motm4', playerId: 'p19', name: 'Bukayo Saka', team: 'ENG', teamFlag: 'gb-eng', position: 'FW', rating: 8.5, goals: 0, assists: 1, votes: 1876, image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Saka_2021_%28cropped%29.jpg/200px-Saka_2021_%28cropped%29.jpg' }
+];
+
+// Friend Activity (Discord-style presence)
+export const FRIEND_ACTIVITY = [
+  { username: 'FootyKing99', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Felix&backgroundColor=39FF14', status: 'Watching FRA vs ENG', online: true, mood: 'hyped' },
+  { username: 'TikiTakaLord', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Shadow&backgroundColor=FF007F', status: 'Just posted a hot take', online: true, mood: 'fired up' },
+  { username: 'xG_Destroyer', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Garfield&backgroundColor=FFB800', status: 'Locked his fantasy squad', online: true, mood: 'analytical' },
+  { username: 'MessiMagic', avatar: 'https://api.dicebear.com/7.x/notionists/svg?seed=Willow&backgroundColor=10B981', status: 'In Watch Party · ARG fans', online: true, mood: 'celebrating' }
+];
+
+// Watch parties (rooms users can join during matches)
+export const WATCH_PARTIES = [
+  { id: 'wp1', match: 'FRA vs ENG', host: 'FootyKing99', viewers: 247, theme: '🇫🇷 vs 🏴', live: true, gradient: 'from-[#0055A4] to-[#CE1124]' },
+  { id: 'wp2', match: 'BRA vs JPN', host: 'TikiTakaLord', viewers: 189, theme: '🇧🇷 vs 🇯🇵', live: false, gradient: 'from-[#FFDF00] to-[#BC002D]' },
+  { id: 'wp3', match: 'ARG vs NED', host: 'MessiMagic', viewers: 412, theme: 'GOAT vs Total Football', live: true, gradient: 'from-[#74ACDF] to-[#FF4F00]' }
+];
