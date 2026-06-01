@@ -1,0 +1,122 @@
+{
+  "theme": "dark",
+  "archetype": "Archetype 7 (Electric & Neon) & Archetype 2 (Performance Pro)",
+  "brand_identity": {
+    "name": "OffPitch",
+    "tone": "High-energy, sarcastic, competitive, cyber-athletic",
+    "visual_mood": "Deep black canvases pierced by aggressive neon glows and strict grid structures."
+  },
+  "typography": {
+    "font_families": {
+      "heading": "Unbounded",
+      "body": "IBM Plex Sans",
+      "monospace": "JetBrains Mono"
+    },
+    "scale": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tighter font-black",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight font-bold",
+      "h3": "text-xl sm:text-2xl tracking-tight font-bold",
+      "body": "text-base leading-relaxed",
+      "small": "text-sm text-zinc-400",
+      "micro_label": "text-xs uppercase tracking-[0.2em] font-bold"
+    }
+  },
+  "color_palette": {
+    "backgrounds": {
+      "base": "#08080A",
+      "surface": "#111115",
+      "surface_elevated": "#1A1A24",
+      "glass": "rgba(17, 17, 21, 0.7)"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#A1A1AA",
+      "muted": "#52525B",
+      "inverse": "#000000"
+    },
+    "accents": {
+      "lime": "#39FF14",
+      "cyan": "#00E5FF",
+      "magenta": "#FF007F",
+      "warning": "#FFB800"
+    },
+    "borders": {
+      "subtle": "rgba(255, 255, 255, 0.1)",
+      "active_glow": "rgba(57, 255, 20, 0.5)"
+    }
+  },
+  "layout_and_spacing": {
+    "philosophy": "Mobile-first PWA layout. Bento grids for data density. Generous padding around distinct modules.",
+    "spacing_scale": "p-4 on mobile, p-6 or p-8 on desktop containers.",
+    "structures": {
+      "mobile": "Bottom fixed tab bar (glassmorphism), top sticky header, scrollable content area.",
+      "desktop": "Left sticky sidebar (w-64), right main content area. Max width 1440px.",
+      "grids": "Use 'Control Room' dense grids for Match Analytics (grid-cols-1 md:grid-cols-3 or 4) with gap-4 or gap-6."
+    }
+  },
+  "surface_strategies": {
+    "cards": "Flat background (#111115), 1px subtle border (border-white/10). No soft shadows. On active, use neon 1px border with outer glow.",
+    "modals": "VAR Review Modal: Sharp edges, heavy backdrop blur (backdrop-blur-xl), neon magenta border, high z-index (z-50).",
+    "navigation": "Glassmorphism for bottom tab bar and top header to prevent content cutoff. backdrop-blur-xl with 1px top border."
+  },
+  "component_guidelines": {
+    "buttons": "Square or very slightly rounded (rounded-md). Solid neon background for primary (text black), transparent with neon border for secondary. Add hover:scale-105 transition.",
+    "inputs": "Flat dark bg, border-white/10. focus:ring-1 focus:ring-cyan or lime. No default outlines.",
+    "tabs": "Override default Shadcn tabs to have transparent backgrounds, bottom active indicator using neon colors, and remove default height constraints.",
+    "squad_builder": "Grid layout overlaying a pitch background. 11 clickable areas. Use plus icons with dashed borders that transition to solid glowing borders when filled."
+  },
+  "interactions_and_motion": {
+    "hover": "Subtle translate-y-[-2px] and shadow glow on cards and interactive elements.",
+    "page_transitions": "Fade and slight slide up for tab switching.",
+    "typing_indicator": "3 dots bouncing animation for AI chat personas.",
+    "trivia_ticker": "Crossfade transitions every 15s using Framer Motion AnimatePresence.",
+    "spicy_mode_toggle": "When toggled, background flashes subtly, toggle button glows heavily, and UI elements shift color accents to magenta/warning."
+  },
+  "media_and_assets": {
+    "icons_library": "lucide-react",
+    "image_urls": {
+      "hero_background": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/0dc3c1f4-3ca6-4897-8760-a412a7a2ce56/images/2a19edaf30cf47a6cd486947c578bb3d95da9cd7f78154240eee1ce8f067e13f.png",
+        "category": "background",
+        "description": "Deep dark obsidian texture with subtle glowing neon grid lines for the main app background or header."
+      },
+      "squad_pitch_bg": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/0dc3c1f4-3ca6-4897-8760-a412a7a2ce56/images/8baf78383732f6b2412de0dd27bab19c0afe9caec553ffe44de5619a037e0102.png",
+        "category": "squad_builder",
+        "description": "Abstract 3D neon soccer pitch for the Fantasy Tournament Squad Builder background."
+      },
+      "var_modal_bg": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/0dc3c1f4-3ca6-4897-8760-a412a7a2ce56/images/a784347d287ffe7ff96c79089ac2ee5da3040f760375f353c8d8b607cbcfa60a.png",
+        "category": "modal",
+        "description": "Glitch effect neon graphic used inside or as a background for the VAR Toxicity Review modal."
+      },
+      "ai_coach_avatar": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/0dc3c1f4-3ca6-4897-8760-a412a7a2ce56/images/15972eeca49144044c395e5111296d0876423ea2ce2ccca05faf2fccff3360ac.png",
+        "category": "avatar",
+        "description": "Stylized cyberpunk soccer coach avatar for AI chat simulators (Jose, Pep, etc.)."
+      },
+      "player_avatar_1": {
+        "url": "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwyfHxzb2NjZXIlMjBwbGF5ZXIlMjBkYXJrJTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3ODAzMzkwNzZ8MA&ixlib=rb-4.1.0&q=85",
+        "category": "player",
+        "description": "Real player image placeholder for squad builder."
+      },
+      "player_avatar_2": {
+        "url": "https://images.pexels.com/photos/10349959/pexels-photo-10349959.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "category": "player",
+        "description": "Real player image placeholder for squad builder."
+      }
+    }
+  },
+  "testing": {
+    "data_testid_rules": "All interactive elements (buttons, nav links, players, toggles) MUST have data-testid attributes in kebab-case format reflecting their role (e.g., data-testid='lock-squad-button')."
+  },
+  "instructions_to_main_agent": [
+    "Strictly adhere to the dark theme (#08080A base, #111115 surface). Do NOT introduce white backgrounds or light mode styles anywhere.",
+    "Incorporate the required fonts (Unbounded for headings, IBM Plex Sans for body, JetBrains Mono for numbers/stats) using Google Fonts.",
+    "Implement the Dual Responsive Layout: bottom floating tab bar for mobile, sleek left sidebar for desktop.",
+    "Use framer-motion for micro-interactions (hover scale, typing indicators, trivia crossfade).",
+    "Build out the mockData.ts exactly as specified to ensure the app is fully populated with players, matches, chat history, and trivia.",
+    "The Squad Builder pitch must utilize the `neon_soccer_pitch` image as a background layer, with 11 positioned slots overlaying it.",
+    "Implement the VAR Review toxicity check as a middleware function that triggers the high-impact glitch modal upon detecting forbidden words."
+  ]
+}
