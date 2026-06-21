@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm Prithbi Biswas</h1>
 
 <h3 align="center">
-Computer Science Engineering Student | Cybersecurity | Full Stack | AI
+Computer Science Engineering Student | Full Stack | AI
 </h3>
 
 ---
