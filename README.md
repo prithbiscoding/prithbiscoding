@@ -22,7 +22,7 @@ Computer Science Engineering Student | Full Stack | AI
 📫 Reach me:
 
 - GitHub: https://github.com/prithbiscoding
-- LinkedIn: Add your LinkedIn here
+- LinkedIn: https://www.linkedin.com/in/prithbi-biswas-029bb4324/
 
 ---
 
